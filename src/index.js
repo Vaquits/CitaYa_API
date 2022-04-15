@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 
 app.get('/', (req, res) => {
-    res.send('Hello for all people!')
+    res.send('Hello for all people in this world!')
 })
 
 mongoose
