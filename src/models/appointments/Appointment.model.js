@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const AppointmentSchema = mongoose.Schema({
+    
     serviceType: {
         type: String,
         required: true
@@ -17,11 +18,13 @@ const AppointmentSchema = mongoose.Schema({
         type: String
     },
     active: {
-        type: Boolean
+        type: Boolean, 
+        default: true
     },
     user: {
         type: mongoose.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
     }
 })
 
