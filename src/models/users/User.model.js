@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const bcrypt = require("bcrypt"); 
 
 const UserSchema = mongoose.Schema({
     documentType: {
@@ -34,13 +35,17 @@ const UserSchema = mongoose.Schema({
         type: String
     },
     mobileNumber: {
-        type: String,
-        required: true
+        type: String
     },
     appointments: [{
         type: mongoose.Types.ObjectId,
         ref: 'Appointment'
     }]
 })
+
+UserSchema.methods.encryptClave = async (password) => {
+    const salt = await bcrypt.genSalt(10);
+    return bcrypt.hash(password, salt);
+}
 
 module.exports = mongoose.model('User', UserSchema)
