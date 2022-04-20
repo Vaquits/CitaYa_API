@@ -30,4 +30,19 @@ router.get("/appointments/specialists/:service_id", (req, res) => {
     .catch((error) => res.json({ message: error }));
 });
 
+//medical-appointment-update
+router.put("/appointments/user/:appointment_id", (req, res) => {
+  const { appointment_id } = req.params;
+  const { serviceTypeID, serviceType, date, hour, user } = req.body;
+  appointmentSchema
+    .updateOne(
+      { _id: appointment_id },
+      {
+        $set: { serviceTypeID, serviceType, date, hour, user },
+      }
+    )
+    .then((data) => res.json({ message: "Cita actualizada correctamente." }))
+    .catch((error) => res.json({ message: error }));
+});
+
 module.exports = router;
