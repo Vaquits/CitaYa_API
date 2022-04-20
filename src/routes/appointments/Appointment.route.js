@@ -15,7 +15,7 @@ router.post("/appointments", (req, res) => {
 router.get("/appointments/:id", (req, res) => {
   const { id } = req.params;
   appointmentSchema
-    .find({ user: id })
+    .find({ user: id, active: true })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
@@ -24,7 +24,7 @@ router.get("/appointments/:id", (req, res) => {
 router.get("/appointments/specialists/:service_id", (req, res) => {
   const { service_id } = req.params;
   appointmentSchema
-    .find({ serviceTypeID: service_id })
+    .find({ serviceTypeID: service_id, active: true })
     .populate("user")
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
@@ -33,15 +33,40 @@ router.get("/appointments/specialists/:service_id", (req, res) => {
 //medical-appointment-update
 router.put("/appointments/user/:appointment_id", (req, res) => {
   const { appointment_id } = req.params;
-  const { serviceTypeID, serviceType, date, hour, user } = req.body;
+  const {
+    serviceTypeID,
+    serviceType,
+    date,
+    hour,
+    orderMedicines,
+    active,
+    user,
+  } = req.body;
   appointmentSchema
     .updateOne(
       { _id: appointment_id },
       {
-        $set: { serviceTypeID, serviceType, date, hour, user },
+        $set: {
+          serviceTypeID,
+          serviceType,
+          date,
+          hour,
+          orderMedicines,
+          active,
+          user,
+        },
       }
     )
     .then((data) => res.json({ message: "Cita actualizada correctamente." }))
+    .catch((error) => res.json({ message: error }));
+});
+
+//medical-appointment-delete
+router.delete("/appointments/specialist/:appointment_id", (req, res) => {
+  const { appointment_id } = req.params;
+  appointmentSchema
+    .deleteOne({ _id: appointment_id })
+    .then((data) => res.json({ message: "Cita eliminada correctamente." }))
     .catch((error) => res.json({ message: error }));
 });
 
