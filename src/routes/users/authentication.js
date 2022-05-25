@@ -4,6 +4,7 @@ const router = express.Router();
 const userSchema = require("../../models/users/User.model");
 const specialistSchema = require("../../models/specialists/Specialist.model");
 const validationsFields = require("../../validations/validationsFields");
+const { getCompleteMenu } = require("../../helpers/completeMenu");
 
 //user-sign-up
 router.post('/signup', async (req, res) => {
@@ -44,7 +45,8 @@ router.post('/login', async (req, res) => {
     if (!validPassword) return res.status(400).json({ error: 'contraseña no válida' })
     res.json({
         error: null,
-        data: 'exito bienvenido usuario'
+        data: 'exito bienvenido usuario',
+        userMenu: getCompleteMenu('USER')
     })
 })
 
@@ -60,7 +62,8 @@ router.post('/login_specialist', async (req, res) => {
     if (!validPasswordSpe) return res.status(400).json({ error: 'contraseña no válida' })
     res.json({
         error: null,
-        data: 'exito bienvenido especialista'
+        data: 'exito bienvenido especialista',
+        userMenu: getCompleteMenu('SPECIALIST')
     })
 })
 
