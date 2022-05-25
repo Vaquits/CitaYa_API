@@ -1,6 +1,6 @@
 const getCompleteMenu = function (userRole = 'USER') {
     const routesMenu = [
-        { path: 'user/dashboard', title: 'Dashboard', icon: 'dashboard', class: '' },
+        // { path: 'user/dashboard', title: 'Dashboard', icon: 'dashboard', class: '' },
         // { path: 'specialist/dashboard', title: 'Dashboard', icon: 'dashboard', class: '' },
         // { path: '/user-profile', title: 'User Profile', icon: 'person', class: '' },
         // { path: '/table-list', title: 'Table List', icon: 'content_paste', class: '' },
@@ -10,7 +10,11 @@ const getCompleteMenu = function (userRole = 'USER') {
     ];
 
     if (userRole === 'SPECIALIST') {
-        routesMenu[0].unshift({ path: 'specialist/dashboard', title: 'Dashboard', icon: 'dashboard', class: '' })
+        routesMenu.unshift({ path: 'specialist/dashboard', title: 'Dashboard', icon: 'dashboard', class: '' })
+    }
+
+    if (userRole === 'USER') {
+        routesMenu.unshift({ path: 'user/dashboard', title: 'Dashboard', icon: 'dashboard', class: '' })
     }
 
     return routesMenu

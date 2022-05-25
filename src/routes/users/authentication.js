@@ -46,7 +46,7 @@ router.post('/login', async (req, res) => {
     res.json({
         error: null,
         data: 'exito bienvenido usuario',
-        userMenu: getCompleteMenu('SPECIALIST')
+        userMenu: getCompleteMenu('USER')
     })
 })
 
@@ -62,7 +62,8 @@ router.post('/login_specialist', async (req, res) => {
     if (!validPasswordSpe) return res.status(400).json({ error: 'contraseña no válida' })
     res.json({
         error: null,
-        data: 'exito bienvenido especialista'
+        data: 'exito bienvenido especialista',
+        userMenu: getCompleteMenu('SPECIALIST')
     })
 })
 
