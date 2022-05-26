@@ -1,20 +1,20 @@
 const getCompleteMenu = function (userRole = 'USER') {
-    const routesMenu = [
-        // { path: 'user/dashboard', title: 'Dashboard', icon: 'dashboard', class: '' },
-        // { path: 'specialist/dashboard', title: 'Dashboard', icon: 'dashboard', class: '' },
-        // { path: '/user-profile', title: 'User Profile', icon: 'person', class: '' },
-        // { path: '/table-list', title: 'Table List', icon: 'content_paste', class: '' },
-        // { path: '/typography', title: 'Typography', icon: 'library_books', class: '' },
-        // { path: '/notifications', title: 'Notifications', icon: 'notifications', class: '' },
-        // { path: '/upgrade', title: 'Upgrade to PRO', icon: 'unarchive', class: 'active-pro' },
-    ];
+    const routesMenu = [];
 
     if (userRole === 'SPECIALIST') {
-        routesMenu.unshift({ path: 'specialist/dashboard', title: 'Dashboard', icon: 'dashboard', class: '' })
+        routesMenu.unshift(
+            { path: 'specialist-dashboard', title: 'Inicio', icon: 'dashboard', class: '' },
+            { path: 'specialist-logout', title: 'Cerrar Sesión', icon: 'logout', class: '' },
+        )
     }
 
     if (userRole === 'USER') {
-        routesMenu.unshift({ path: 'user/dashboard', title: 'Dashboard', icon: 'dashboard', class: '' })
+        routesMenu.unshift(
+            { path: 'user-dashboard', title: 'Inicio', icon: 'dashboard', class: '' },
+            { path: 'user-add-date', title: 'Agendar Cita', icon: 'add_box', class: '' },
+            { path: 'user-modify-date', title: 'Gestionar Citas', icon: 'edit', class: '' },
+            { path: 'user-logout', title: 'Cerrar Sesión', icon: 'logout', class: '' },
+        )
     }
 
     return routesMenu
