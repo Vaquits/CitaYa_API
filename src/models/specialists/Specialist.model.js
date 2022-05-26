@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const bcrypt = require("bcrypt"); 
+const bcrypt = require("bcrypt");
 
 const SpecialistSchema = mongoose.Schema({
 
@@ -11,6 +11,10 @@ const SpecialistSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    specialityType: {
+        type: Number,
+        require: true
     }
 })
 
