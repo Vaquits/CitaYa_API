@@ -28,7 +28,8 @@ router.post('/signup', async (req, res) => {
     user.confirmPassword = await user.encryptClave(user.confirmPassword);
     await user.save();
     res.json({
-        message: "Usuario guardado."
+        message: "Usuario guardado.",
+        userMenu: getCompleteMenu('USER')
     });
 
 });
