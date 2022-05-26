@@ -64,6 +64,7 @@ router.post('/login_specialist', async (req, res) => {
     res.json({
         error: null,
         data: 'exito bienvenido especialista',
+        speciality: specialist.specialityType,
         userMenu: getCompleteMenu('SPECIALIST')
     })
 })
