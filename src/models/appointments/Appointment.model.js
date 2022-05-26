@@ -2,32 +2,26 @@ const mongoose = require("mongoose");
 
 const AppointmentSchema = mongoose.Schema({
   serviceTypeID: {
-    type: String,
-    required: true,
+    type: String
   },
   serviceType: {
-    type: String,
-    required: true,
+    type: String
   },
   date: {
-    type: String,
-    required: true,
+    type: String
   },
   hour: {
-    type: String,
-    required: true,
+    type: String
   },
   orderMedicines: {
     type: String,
   },
   active: {
-    type: Boolean,
-    default: true,
+    type: Boolean
   },
   user: {
     type: mongoose.Types.ObjectId,
-    ref: "User",
-    required: true,
+    ref: "User"
   },
 });
 
